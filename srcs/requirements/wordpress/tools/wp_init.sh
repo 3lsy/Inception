@@ -19,9 +19,7 @@ define( 'DB_PASSWORD', '$DB_USER_PWD' );
 define( 'DB_HOST', '$DB_HOST' );
 define( 'DB_CHARSET', 'utf8' );
 define( 'DB_COLLATE', '' );
-EOF
-	wget -qO- --no-check-certificate https://api.wordpress.org/secret-key/1.1/salt/ >> /var/www/html/wordpress/wp-config.php
-	cat <<EOF >> /var/www/html/wordpress/wp-config.php
+$(wget -qO- --no-check-certificate https://api.wordpress.org/secret-key/1.1/salt/)
 \$table_prefix = 'wp_';
 define( 'WP_DEBUG', false );
 if ( ! defined( 'ABSPATH' ) ) {
