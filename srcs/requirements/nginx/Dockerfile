@@ -24,7 +24,7 @@ RUN mkdir -p /etc/nginx/ssl && \
 
 COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
 
-RUN mkdir -p /run/php && php-fpm7.4
+RUN mkdir -p /run/php /var/www/html && php-fpm7.4
 
 EXPOSE 443
 

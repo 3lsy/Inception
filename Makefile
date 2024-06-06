@@ -1,14 +1,14 @@
 YAML		=	docker-compose.yml
 SRCS		=	./srcs/
 
-CONTS		=	nginx #wordpress mariadb
+CONTS		=	mariadb wordpress nginx
 
-COMPOSE		= 	sudo docker compose
+COMPOSE		= 	sudo docker compose # remove sudo after
 
 all		:	up
 
 up		:
-			@(cd $(SRCS) && $(COMPOSE) -f $(YAML) up -d --build)
+			@(cd $(SRCS) && $(COMPOSE) -f $(YAML) up --build)
 
 down	:
 			@(cd $(SRCS) && $(COMPOSE) -f $(YAML) down)
@@ -27,6 +27,15 @@ rm		:
 
 config	:
 			@(cd $(SRCS) && $(COMPOSE) -f $(YAML) config)
+
+bash_mariadb	:
+			@(cd $(SRCS) && $(COMPOSE) -f $(YAML) exec mariadb /bin/bash)
+
+bash_wordpress	:
+			@(cd $(SRCS) && $(COMPOSE) -f $(YAML) exec wordpress /bin/bash)
+
+bash_nginx	:
+			@(cd $(SRCS) && $(COMPOSE) -f $(YAML) exec nginx /bin/bash)
 
 re		:	stop rm all
 

@@ -14,3 +14,33 @@ services:
     restart: on-failure
     networks:
       - inception-network
+    volumes:
+      - ./wordpress-data:/var/www/html # Replace when using VM
+    depends_on:
+      - wordpress
+    
+  wordpress:
+    container_name: wordpress
+    build:
+      context: requirements/wordpress
+      dockerfile: Dockerfile
+    env_file: .env
+    restart: on-failure
+    networks:
+      - inception-network
+    depends_on:
+      - mariadb
+    volumes:
+      - ./wordpress-data:/var/www/html # Replace when using VM
+
+  mariadb:
+    container_name: mariadb
+    build:
+      context: requirements/mariadb
+      dockerfile: Dockerfile
+    env_file: .env
+    restart: on-failure
+    networks:
+      - inception-network
+    volumes:
+      - ./mariadb-data:/var/lib/mysql # Replace when using VM
