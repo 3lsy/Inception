@@ -26,6 +26,4 @@ COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
 
 RUN mkdir -p /run/php /var/www/html && php-fpm7.4
 
-EXPOSE 443
-
 CMD ["nginx", "-g", "daemon off;"]

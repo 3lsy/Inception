@@ -22,6 +22,4 @@ COPY tools/wp_init.sh /tmp/
 
 RUN chmod +x /tmp/wp_init.sh
 
-EXPOSE 9000
-
 ENTRYPOINT ["/tmp/wp_init.sh"]

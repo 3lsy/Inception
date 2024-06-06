@@ -13,7 +13,5 @@ COPY tools/db_init.sh /tmp/
 
 RUN chmod +x /tmp/db_init.sh
 
-EXPOSE 3306
-
 # Start MariaDB service
 CMD ["/tmp/db_init.sh"]

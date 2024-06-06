@@ -3,8 +3,23 @@ networks:
   inception-network:
     name: inception-network
 
+volumes:
+  wordpress_data:
+    name: wordpress_data
+    driver: local
+    driver_opts:
+      o: 'bind'
+      device: './wordpress-data' # Replace when using VM
+  mariadb_data:
+    name: mariadb_data
+    driver: local
+    driver_opts:
+      o: 'bind'
+      device: './mariadb-data'  # Replace when using VM
+
 services:
   nginx:
+    image: nginx
     container_name: nginx
     build:
       context: requirements/nginx
@@ -15,11 +30,12 @@ services:
     networks:
       - inception-network
     volumes:
-      - ./wordpress-data:/var/www/html # Replace when using VM
+      - wordpress_data:/var/www/html
     depends_on:
       - wordpress
     
   wordpress:
+    image: wordpress
     container_name: wordpress
     build:
       context: requirements/wordpress
@@ -31,9 +47,10 @@ services:
     depends_on:
       - mariadb
     volumes:
-      - ./wordpress-data:/var/www/html # Replace when using VM
+      - wordpress_data:/var/www/html
 
   mariadb:
+    image: mariadb
     container_name: mariadb
     build:
       context: requirements/mariadb
@@ -43,4 +60,4 @@ services:
     networks:
       - inception-network
     volumes:
-      - ./mariadb-data:/var/lib/mysql # Replace when using VM
+      - mariadb_data:/var/lib/mysql
