@@ -18,7 +18,7 @@ sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Add user to Docker group
-sudo usermod -aG docker vagrant
+sudo usermod -aG docker echavez-
 newgrp docker
 
 # Enable Docker service
