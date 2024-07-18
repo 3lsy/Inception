@@ -27,7 +27,7 @@ echo \
 sudo apt-get update
 
 # Install Docker
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Add user to Docker group
 sudo usermod -aG docker echavez-
