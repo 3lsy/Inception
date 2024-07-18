@@ -8,7 +8,7 @@ COMPOSE		= 	docker compose
 all		:	up
 
 up		:
-			@(cd $(SRCS) && $(COMPOSE) -f $(YAML) up --build)
+			@(cd $(SRCS) && $(COMPOSE) -f $(YAML) up -d --build)
 
 down	:
 			@(cd $(SRCS) && $(COMPOSE) -f $(YAML) down)
