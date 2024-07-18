@@ -8,12 +8,14 @@ volumes:
     name: wordpress_data
     driver: local
     driver_opts:
+      type: 'bind'
       o: 'bind'
       device: '/home/echavez-/data/wordpress-data'
   mariadb_data:
     name: mariadb_data
     driver: local
     driver_opts:
+      type: 'bind'
       o: 'bind'
       device: '/home/echavez-/data/mariadb-data'
 
