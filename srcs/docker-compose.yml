@@ -9,13 +9,13 @@ volumes:
     driver: local
     driver_opts:
       o: 'bind'
-      device: './wordpress-data' # Replace when using VM
+      device: '/home/echavez-/data/wordpress-data'
   mariadb_data:
     name: mariadb_data
     driver: local
     driver_opts:
       o: 'bind'
-      device: './mariadb-data'  # Replace when using VM
+      device: '/home/echavez-/data/mariadb-data'
 
 services:
   nginx:
