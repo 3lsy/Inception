@@ -30,7 +30,7 @@ EOF
 
 	cat /var/www/html/wordpress/wp-config.php
 
-	wp-cli core install --url=$DOMAIN_NAME --title=Inception --admin_user=$WP_ADMIN --admin_password=$WP_ADMIN_PWD --admin_email="$WP_ADMIN_MAIL" --allow-root --path=/var/www/html/wordpress
+	wp-cli core install --url=https://$DOMAIN_NAME --title=Inception --admin_user=$WP_ADMIN --admin_password=$WP_ADMIN_PWD --admin_email="$WP_ADMIN_MAIL" --allow-root --path=/var/www/html/wordpress
 	wp-cli user create $WP_USER $WP_USER_MAIL --role=editor --user_pass="$WP_USER_PWD" --allow-root --path=/var/www/html/wordpress
 fi
 
