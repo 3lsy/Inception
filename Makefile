@@ -3,7 +3,7 @@ SRCS		=	./srcs/
 
 CONTS		=	mariadb wordpress nginx
 
-COMPOSE		= 	sudo docker compose # remove sudo after
+COMPOSE		= 	docker compose
 
 all		:	up
 
