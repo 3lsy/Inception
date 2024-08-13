@@ -32,6 +32,11 @@ EOF
 
 	wp-cli core install --url=https://$DOMAIN_NAME --title=Inception --admin_user=$WP_ADMIN --admin_password=$WP_ADMIN_PWD --admin_email="$WP_ADMIN_MAIL" --allow-root --path=/var/www/html/wordpress
 	wp-cli user create $WP_USER $WP_USER_MAIL --role=editor --user_pass="$WP_USER_PWD" --allow-root --path=/var/www/html/wordpress
+
+	# Permissions
+	chown -R www-data:www-data /var/www/html/wordpress
+	find /var/www/html/wordpress -type d -exec chmod 755 {} \;
+	find /var/www/html/wordpress -type f -exec chmod 644 {} \;
 fi
 
 echo "Starting php-fpm..."
